@@ -58,7 +58,7 @@ const getTask = async(req , res)=>{
     const {id} = req.params;
     try {
       
-     let tasks = await taskModel.find({_id:id} , {$set:{name : req.body.name , 
+     let tasks = await taskModel.updateOne({_id:id} , {$set:{name : req.body.name , 
       type : req.body.type ,
       assign : req.body.assign}});
      res.status(201).send({
