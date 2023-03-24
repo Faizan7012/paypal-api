@@ -5,7 +5,7 @@ const { getTask, createTask, delTask, editTask, changeStatus, getTaskByAssignee,
 const taskRoute = express.Router();
 
 taskRoute.get("/:id", getTask )
-taskRoute.get("/sigle/:id", getSingleTask )
+taskRoute.get("/single/:id", getSingleTask )
 taskRoute.get("/assign/:id", getTaskByAssignee )
 taskRoute.post("/", createTask )
 taskRoute.delete("/:id", delTask )
