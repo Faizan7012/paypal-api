@@ -60,7 +60,8 @@ const getTask = async(req , res)=>{
       
      let tasks = await taskModel.findByIdAndUpdate(id , {
         name : req.body.name , 
-        type : req.body.type
+        type : req.body.type ,
+        assign : req.body.assign
      });
      res.status(201).send({
          status:true,
@@ -112,5 +113,22 @@ const getTask = async(req , res)=>{
       })
     }
   }
+  const getSingleTask = async(req , res)=>{
+    const {id} = req.params;
+    try {
+      
+     let task = await taskModel.findOne({_id:id}).populate(['sprint','assign'])
+     res.status(201).send({
+         status:true,
+         data:task
+     })
+  
+    } catch (error) {
+      res.status(401).send({
+          status:false , 
+          message : error.message
+      })
+    }
+  }
 
-  module.exports = {createTask , getTask , delTask , editTask , changeStatus , getTaskByAssignee}
+  module.exports = {createTask , getTask , delTask , editTask , changeStatus , getTaskByAssignee , getSingleTask}
