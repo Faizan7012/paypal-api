@@ -5,10 +5,16 @@ const taskModel = require("../Model/task.model");
 
 const sprintRoute = express.Router();
 
-
+// get sprints
 sprintRoute.get("/", getSprint )
+
+// create sprint
 sprintRoute.post("/", createSprint )
+
+// delete sprint
 sprintRoute.delete("/:id", delSprint )
+
+// get all tasks count in every sprint
 sprintRoute.get("/tasks", async(req , res)=>{
     try {
         
